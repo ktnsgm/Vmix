@@ -9,6 +9,7 @@ let placeholderValue = ""
 function saveEntryIP() {
     let userInput = document.getElementById('IP')
     localStorage.setItem("IPAddress", userInput.value)
+    window.location.href="./Main.html";
   }
 
 function httpGet(link) {
