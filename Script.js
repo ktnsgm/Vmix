@@ -4,7 +4,7 @@ let inputNumber = "clear"
 let vmixValue = ""
 let vmixFunc = ""
 let placeholder = ""
-let placeholderValue = ""
+let placeHolderValue = ""
 
 function saveEntryIP() {
     let userInput = document.getElementById('IP')
@@ -91,35 +91,35 @@ function btnPressInput(objImage, newSrc) {
   }
   };
 
-  function btnPressValue(objImage, newSrc) {
+function btnPressValue(objImage, newSrc) {
 
-    chngImage(objImage, newSrc)
-    entryIP = `${localStorage.getItem('IPAddress')}`
+  chngImage(objImage, newSrc)
+  entryIP = `${localStorage.getItem('IPAddress')}`
+  if (localStorage.getItem('vmixValue')) {
     entryValue = `${localStorage.getItem('vmixValue')}`
-  
-    if (entryIP) {
-      if (vmixFunc) {
-        if (entryValue === "Input") {
-          if(inputNumber === "1" || inputNumber === "2" || inputNumber === "3" || inputNumber === "4"){
-            httpGet(`http://${entryIP}:8088/api/?function=${vmixFunc}&Value=Input&Input=${inputNumber}`);
-    
-          } else if (inputNumber === "clear") {
-            httpGet(`http://${entryIP}:8088/api/?function=${vmixFunc}&Value=Input&Input=${placeholder}`);
-          } else {
-            alert("Invalid input, valid value")
-        }
-        } else if (entryValue) {
-          httpGet(`http://${entryIP}:8088/api/?function=${vmixFunc}&Value=${vmixValue}`);
-        } else {
-          httpGet(`http://${entryIP}:8088/api/?function=${vmixFunc}&Value=${placeholderValue}`);
-        }
-      } else {
-        alert("Invalid Vmix Function!")
+  } else {
+    entryValue = ""
+  }
+
+  if (entryIP) {
+    if (vmixFunc) {
+      if (entryValue !== "Input") {
+        httpGet(`http://${entryIP}:8088/api/?function=${vmixFunc}&Value=${placeHolderValue}`);
+      } else if (inputNumber === "1" || inputNumber === "2" || inputNumber === "3" || inputNumber === "4") {
+        httpGet(`http://${entryIP}:8088/api/?function=${vmixFunc}&Value=Input&Input=${inputNumber}`);
+      } else if (inputNumber === "clear") {
+        httpGet(`http://${entryIP}:8088/api/?function=${vmixFunc}&Value=Input&Input=${placeholder}`);
+      } else if (inputNumber === "") {
+        alert("Invalid input, valid value")
       }
     } else {
-      alert("Invalid IP Address!")
+      alert("Invalid Vmix Function!")
     }
-    };
+  } else {
+    alert("Invalid IP Address!")
+  }
+
+};
 
 function clearInput() {
   inputNumber = ""
@@ -131,11 +131,6 @@ function clearInput() {
 function clearValue() {
   vmixValue = ""
 };
-
-topLeft = document.getElementById("title");
-if (topLeft) {
-  topLeft.addEventListener("dblclick", clearInputs);
-}
 
 
 function setInputOne() {
@@ -167,10 +162,12 @@ function vmixInputGet(functionality, inputHolder) {
 
 function vmixValueGet(functionality, valueHolder, inputHolder) {
   vmixFunc = functionality
-  if (valueHolder) {
-    if (inputHolder) {
+  if (valueHolder !== "") {
+    placeHolderValue = valueHolder
+    if (inputHolder !== "") {
       placeholder = inputHolder
+    } else {
+      return;
     }
-    placeholderValue = valueHolder
   }
 };
