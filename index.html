@@ -8,17 +8,15 @@
 </head>
 <body>
     <div class="container">
-        <form>
-            <div class="form-group">
-                <input id="IP" class="form-control" autofocus="autofocus" type="text" placeholder="Enter IP Address">
-                <script>
-                    if (!("autofocus" in document.createElement("input"))) {
-                        document.getElementById("IP").focus();
-                    }
-                </script>
-            </div>
-            <a href="./Main.html"> <input onclick="saveEntryIP();" class="btn btn-primary" type="submit" value="Enter"> </a>
-        </form>
+        <div class="form-group">
+            <input id="IP" class="form-control" autofocus="autofocus" type="text" placeholder="Enter IP Address">
+            <script>
+                if (!("autofocus" in document.createElement("input"))) {
+                    document.getElementById("IP").focus();
+                }
+        </script>
+        </div>
+        <a onclick="saveEntryIP();" href="./Main.html"> <input class="btn btn-primary" type="submit" value="Enter"> </a>
     </div>
 </body>
 </html>
