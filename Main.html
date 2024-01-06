@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vmix</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> <link rel="stylesheet" href="Main.css"> <!-- Your custom CSS file -->
+    <script src="Script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <form>
+            <input id="value" class="form-control mb-2" type="text" placeholder="Enter Value">
+            <input onclick="saveEntryValue();" class="btn btn-primary mr-2" type="submit" value="Enter">
+            <button onclick="clearValue();" class="btn btn-secondary">Clear</button>
+        </form>
+        <table class="table" width="100%" cellspacing="5" cellpadding="3">
+			<tr>
+				<td align= "center"><img id="title" src="Assets/Inputs.png" width ="175" height="175" onclick="chngImage(this, 'Assets/InputsIn.png'); clearInput()" /></td>
+				<td align= "center" class = top-row><img src="Assets/1.png" width ="175" height="175" onclick="chngImage(this, 'Assets/1In.png'); setInputOne()"/></td>
+				<td align= "center" class = top-row><img src="Assets/2.png" width ="175" height="175" onclick="chngImage(this, 'Assets/2In.png'); setInputTwo()"/></td>
+				<td align= "center" class = top-row><img src="Assets/3.png" width ="175" height="175" onclick="chngImage(this, 'Assets/3In.png'); setInputThree()" /></td>
+				<td align= "center" class = top-row><img src="Assets/4.png" width ="175" height="175" onclick="chngImage(this, 'Assets/4In.png'); setInputFour()"/></td>
+			</tr>
+			<tr>
+				<td align= "center" class = second-row><img src="Assets/Recording.png" width ="175" height="175" onclick="vMix('StartStopMultiCorder'); btnPress(this, 'Assets/RecordingIn.png');" /></td>
+				<td align= "center" class = second-row><img src="Assets/Clear1.png" width ="175" height="175" onclick="vmixInputGet('OverlayInput1Out'); btnPressInput(this, 'Assets/Clear1In.png');"/></td>
+				<td align= "center" class = second-row><img src="Assets/Clear2.png" width ="175" height="175" onclick="vmixInputGet('OverlayInput2Out'); btnPressInput(this, 'Assets/Clear2In.png');"/></td>
+				<td align= "center" class = second-row><img src="Assets/Clear3.png" width ="175" height="175" onclick="vmixInputGet('OverlayInput3Out'); btnPressInput(this, 'Assets/Clear3In.png');" /></td>
+				<td align= "center" class = second-row><img src="Assets/Clear4.png" width ="175" height="175" onclick="vmixInputGet('OverlayInput4Out'); btnPressInput(this, 'Assets/Clear4In.png');" /></td>
+			</tr>
+	
+			<tr>
+				<td align= "center" class = second-row><img src="Assets/FullOutput.png" width ="175" height="175" onclick="vmixValueGet('SetOutputFullscreen', 'Output'); btnPressValue(this, 'Assets/FullOutputIn.png');" /></td>
+				<td align= "center" class = second-row><img src="Assets/C1.png" width ="175" height="175" onclick="vmixInputGet('PreviewOverlayInput1', '1'); btnPressInput(this, 'Assets/C1In.png');"/></td>
+				<td align= "center" class = second-row><img src="Assets/C2.png" width ="175" height="175" onclick="vmixInputGet('PreviewOverlayInput1', '2'); btnPressInput(this, 'Assets/C2In.png');"/></td>
+				<td align= "center" class = second-row><img src="Assets/Low3rd.png" width ="175" height="175" onclick="vmixInputGet('OverlayInput2In', '5'); btnPressInput(this, 'Assets/Low3rdIn.png');"/></td>
+				<td align= "center" class = second-row><img src="Assets/FullImage.png" width ="175" height="175" onclick="vmixInputGet('PreviewOverlayInput4', '4'); btnPressInput(this, 'Assets/FullImageIn.png');"/></td>
+	
+			</tr>
+    </div>
+</body>
+</html>
