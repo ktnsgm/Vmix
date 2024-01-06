@@ -9,7 +9,11 @@ let placeholderValue = ""
 function saveEntryIP() {
     let userInput = document.getElementById('IP')
     localStorage.setItem("IPAddress", userInput.value)
-    window.location.href="./Main.html";
+    if (localStorage.getItem("IPAddress")) {
+        window.location.href="./Main.html";
+    } else {
+        alert("Input an IP Address!")
+    }
   }
 
 function httpGet(link) {
